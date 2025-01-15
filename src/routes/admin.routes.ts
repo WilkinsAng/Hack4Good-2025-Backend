@@ -1,5 +1,4 @@
-import express from 'express';
-
+import express, {NextFunction, Request, Response} from 'express';
 const adminRouter = express.Router();
 
 adminRouter.get('/', (req, res) => {
@@ -27,4 +26,8 @@ adminRouter.put('/voucher-requests', (req, res) => {
     res.send('Update a voucher');
 });
 
+adminRouter.get('/', (req, res) => {
+    const user = req.user as any;
+    res.json({ message: `Welcome, Admin ${user.name}!` });
+});
 export default adminRouter;
