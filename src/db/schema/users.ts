@@ -11,6 +11,7 @@ export const usersTable = pgTable(
         password: varchar({ length: 255 }).notNull(),
         isAdmin: boolean().default(false),
         credits: integer().default(0).notNull(),
+        isSuspended: boolean().default(false),
         ...timestamps,
     },
     (table) => [
