@@ -1,17 +1,9 @@
-import { NextFunction, Request, Response } from 'express';
-import { db } from '../db/index';
+import { Request, Response } from 'express';
+import { getProductById } from '../services/products';
 
 export async function getProduct(req: Request, res: Response) {
     const productId = Number.parseInt(req.params.id);
-    const product = await db.query.productTable.findFirst({
-        columns: {
-            id: true,
-            name: true,
-            price: true,
-            description: true,
-        },
-        where: (productRow, { eq }) => eq(productRow.id, productId),
-    });
+    const product = await getProductById(productId);
     if (product === undefined) {
         res.status(404).json({ message: 'Product not found' });
         return;
