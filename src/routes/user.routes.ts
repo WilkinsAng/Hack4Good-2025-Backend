@@ -1,4 +1,5 @@
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import { getProduct } from '../controllers/products';
 
 const privateRouter = express.Router();
 
@@ -11,4 +12,11 @@ privateRouter.get('/', (req, res) => {
     });
 
 privateRouter.route('/user');
+
+privateRouter.get('/products', (req: Request, res: Response) => {
+    res.send('Get ALL products');
+});
+
+privateRouter.get('/products/:id', getProduct);
+
 export default privateRouter;
