@@ -1,6 +1,8 @@
 import { db } from '../db/index';
 
-export async function getProductById(id: number): Promise<Product | undefined> {
+export async function getProductById(
+    id: number
+): Promise<ProductResponse | undefined> {
     const product = await db.query.productTable.findFirst({
         columns: {
             id: true,

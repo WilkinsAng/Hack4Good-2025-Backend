@@ -8,3 +8,9 @@ export const inventoryAuditLogTable = pgTable('inventory_audit_log', {
         .references(() => usersTable.id),
     message: varchar({ length: 255 }).notNull(),
 });
+
+export interface inventoryAuditLog {
+    createdAt: Date;
+    userId: number;
+    message: string;
+}

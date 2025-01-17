@@ -13,3 +13,14 @@ export const vourcherRequestsTable = pgTable('voucher_requests', {
     approvedBy: integer().references(() => usersTable.id),
     ...timestamps,
 });
+
+export interface VoucherRequest {
+    id: number;
+    userId: number;
+    amount: number;
+    isApproved: string;
+    approvedAt: Date;
+    approvedBy: number;
+    createdAt: Date;
+    updatedAt: Date;
+}

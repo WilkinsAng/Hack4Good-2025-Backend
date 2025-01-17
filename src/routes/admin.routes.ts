@@ -1,4 +1,5 @@
-import express, {NextFunction, Request, Response} from 'express';
+import express, { NextFunction, Request, Response } from 'express';
+import { User } from '../db/schema/schema';
 const adminRouter = express.Router();
 
 adminRouter.get('/', (req, res) => {
@@ -27,7 +28,7 @@ adminRouter.put('/voucher-requests', (req, res) => {
 });
 
 adminRouter.get('/', (req, res) => {
-    const user = req.user as any;
+    const user = req.user as User;
     res.json({ message: `Welcome, Admin ${user.name}!` });
 });
 export default adminRouter;

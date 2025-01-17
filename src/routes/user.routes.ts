@@ -1,5 +1,6 @@
 import express, { NextFunction, Request, Response } from 'express';
 import { getProduct } from '../controllers/products';
+import { User } from '../db/schema/schema';
 
 const privateRouter = express.Router();
 
@@ -8,8 +9,10 @@ privateRouter.get('/', (req: Request, res: Response) => {
 });
 
 privateRouter.get('/', (req, res) => {
-        res.json({ message: `Welcome, ${(req.user as any).isAdmin ? 'Admin' : 'User'}!` });
+    res.json({
+        message: `Welcome, ${(req.user as User).isAdmin ? 'Admin' : 'User'}!`,
     });
+});
 
 privateRouter.route('/user');
 

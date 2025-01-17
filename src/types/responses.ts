@@ -1,4 +1,4 @@
-interface Product {
+interface ProductResponse {
     id: number;
     name: string;
     price: number;
